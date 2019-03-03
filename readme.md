@@ -55,7 +55,19 @@ root@hdp-01:~# jps
 1226 DataNode
 1451 Jps
 ```
-> 一键启动其实是使用ssh登录到其它机器去执行hadoop-daemon.sh脚本，所以必须配置容器间免密登录，在Dockerfile中已经配置
+> 一键启动其实是使用ssh登录到其它机器去执行hadoop-daemon.sh脚本，所以必须配置容器间免密登录，在Dockerfile中已经配置,启动的机器在slaves文件中配置
+
+
+#### 6. 启动Yarn集群
+在yarn-site.xml中配置好resourcemanager节点后，在resourcemanager节点机器上运行start-yarn.sh脚本，就会在运行该脚本的机器上启动启动resourcemanager程序和slaves中所有节点的NodeManager程序             
+接下来可以通过8088端口访问yarn集群信息：
+```
+http://hdp-04:8088
+```
+
+#### HDFS客户端
+
+#### Yarn客户端
 
 
 #### HDFS配置
@@ -65,6 +77,7 @@ root@hdp-01:~# jps
 - namenode dir为 /root/dfs/name
 - datanode dir为 /root/dfs/data
 - dfs.replication副本数量为 2
+- yarn 8088
 
 #### 关于端口
 必须暴露的端口：

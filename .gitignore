@@ -1,0 +1,4 @@
+master.zip
+hadoop-docker-master/*
+config/hadoop-2.8.1.tar.gz
+config/jdk-8u201-linux-x64.tar.gz
