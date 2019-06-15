@@ -23,7 +23,7 @@ ADD config/hadoop-config/*  /usr/local/hadoop/etc/hadoop/
 
 # 设置环境变量、创建hadoop工作目录
 RUN sed -i '$a export JAVA_HOME=/usr/local/jdk\nexport PATH=$PATH:$JAVA_HOME/bin\n' /etc/profile && \
-    sed -i '$a export HADOOP_HOME=/usr/local/hadoop\nPATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin\n' /etc/profile && \
+    sed -i '$a export HADOOP_HOME=/usr/local/hadoop\nexport PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin\n' /etc/profile && \
     mkdir -p /root/dfs/name && \
     mkdir -p /root/dfs/data
 
@@ -34,5 +34,5 @@ RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
 
 CMD [ "sh", "-c", "service ssh start; bash"]
 
-EXPOSE 22 9000 50070 8088 50090
+EXPOSE 22 9000 50070 8088 50090 2181 2888 3888
 
